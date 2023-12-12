@@ -43,6 +43,7 @@
     function deletePost() {
         if (confirm("削除しますか?")) {
             document.delete.submit();
+            
         }
     }
 </script>
