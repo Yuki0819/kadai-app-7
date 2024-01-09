@@ -17,8 +17,9 @@ class User extends Model
     public function posts()
     {
         return Post::where('user', $this->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        ->where('is_deleted',false)
+        ->orderBy('created_at', 'desc')
+        ->get();
     }
 
     /**

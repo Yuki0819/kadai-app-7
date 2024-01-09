@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Controllers\Controller,
     Session;
+    
+    
+    
 
 class PostController extends Controller
 {
@@ -110,6 +113,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         // idから投稿を取得
         $post = Post::find($id);
 

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+session_start();
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller,
     Session;
 
 class LoginController extends Controller
+
 {
     /**
      * ログイン画面遷移
@@ -45,6 +46,9 @@ class LoginController extends Controller
      */
     public function logout()
     {
+
+        session()->forget('user');
+
         return redirect('/login');
     }
 }
