@@ -18,6 +18,13 @@
             @csrf
             <textarea name="postContent" id="" cols="30" rows="5" placeholder="いまどうしてる?"></textarea>
             <div class="post-button">
+            @error('postContent')
+  <div class="mt-3">
+      <p class="text-red-500">
+          {{ $message }}
+      </p>
+  </div>
+@enderror
                 <button class="button-white" type="submit">投稿する</button>
             </div>
         </form>
