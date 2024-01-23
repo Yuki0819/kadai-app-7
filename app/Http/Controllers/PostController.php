@@ -140,6 +140,8 @@ Validator::make($request->all(), $rules, $messages)->validate();
         $post->content = $request->postContent;
         $post->save();
 
+        
+
         // 画面表示
         return redirect('/post/detail/' . $post->id);
     }
