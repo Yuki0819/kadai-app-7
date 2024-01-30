@@ -23,6 +23,7 @@
                 <div class="content">{{ $post->content }}</div>
                 <div class="time-stamp">{{ $post->created_at }}</div>
             </a>
+            @if ($isOwnPost = $loginUser->id == $user->id)  
             <div class="menu">
                 <div class="menu-item font-blue">
                     <a href="/post/edit/{{ $post->id }}">編集</a>
@@ -34,9 +35,11 @@
                     </div>
                 </form>
             </div>
+            @endif
         </div>
     </div>
 </body>
+
 <x-footer></x-footer>
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>

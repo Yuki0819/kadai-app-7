@@ -87,7 +87,7 @@ Validator::make($request->all(), $rules, $messages)->validate();
         }
 
         // 画面表示
-        return view('post.detail', compact('post', 'user', 'isOwnPost'));
+        return view('post.detail', compact('post', 'user', 'isOwnPost','loginUser'));
     }
 
     /**
