@@ -13,13 +13,25 @@
 
 <body class="">
     <x-header></x-header>
-    <div class="page singup-page">
-        <h2>課題: ここに新規登録ページを作ること</h2>
-        <h3>必要なフォームパーツ</h3>
-        <ul>
-            <li>Email入力フォーム</li>
-            <li>パスワード入力フォーム</li>
-            <li>登録ボタン</li>
+        <div class="page signup-page">
+        <form class="form" action="/signup" method="get head">
+            @csrf
+            <div class="form-item name">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" />
+            <div class="form-item email">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" />
+            </div>
+            <div class="form-item password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
+            </div>
+            <div class="signup-button">
+                <button class="button-white" type="submit">sign up</button>
+            </div>
+        </form>
+    </div>
         </ul>
         <h3>バリデーションルール</h3>
         <h4>メールアドレス</h4>
@@ -38,6 +50,50 @@
     </div>
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
-<style scoped></style>
+<style scoped>
+    <style scoped>
+    .signup-page {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .signup-page .title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .signup-page .form {
+        width: 100vw;
+    }
+    
+    .signup-page input {
+        height: 30px;
+        border-radius: 10px;
+        background-color: lightgray;
+    }
+    
+    .signup-page .form-item {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .signup-page .signup-button {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .signup-page button {
+        width: 50%;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .signup-page .error-message {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+</style>
 
 </html>
