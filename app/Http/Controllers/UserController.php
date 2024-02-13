@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
+
 class UserController extends Controller
 {
     /**
@@ -124,8 +125,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+          ];
+         
+          $messages = ['required' => '入力してください', 'min' => '8文字以上にしてください。'];
+         
+          Validator::make($request->all(), $rules, $messages)->validate();
+            
+                $user = new User;
+                $user->name =$request->input('name');
+                $user->email =$request->input('email');
+                $user->password =$request->input('password');
+                
+                $user->save();
+
+            
+
+            return redirect('/');
+        }
+
         //TODO 登録処理
-        Session::put('user', $user);
-        return redirect('/');
-    }
 }
+
