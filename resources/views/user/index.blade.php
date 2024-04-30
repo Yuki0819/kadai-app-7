@@ -24,6 +24,19 @@
                             <button class="button-white edit">編集</button>
                         </a>
                         @else
+                        <div class="block-info">
+                            <form name="block" action="/block/{{ $user->id }}" method="post">
+                                @csrf @method('PUT') @if ($isblocked)
+                                <input type="hidden" name="isblock" value="0" />
+                                <button class="button-white" onClick="unblock()">
+                                        ブロック中
+                                    </button> @else
+                                <input type="hidden" name="isblock" value="1" />
+                                <button class="button-black">
+                                        ブロック
+                                    </button> @endif
+                            </form>
+                        </div>
                         <div class="follow-info">
                             <form name="follow" action="/follow/{{ $user->id }}" method="post">
                                 @csrf @method('PUT') @if ($isFollowed)
@@ -85,6 +98,13 @@
     function unfollow() {
         if (confirm("フォローを解除しますか?")) {
             document.follow.submit();
+        }
+    }
+</script>
+<script>
+    function unblock() {
+        if (confirm("ブロックを解除しますか?")) {
+            document.block.submit();
         }
     }
 </script>

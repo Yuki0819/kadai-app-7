@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Follow;
 use App\Models\Post;
+use App\Models\Block;
 
 class User extends Model
 {
@@ -63,6 +64,20 @@ class User extends Model
     }
 
     /**
+     * $idのユーザーがこのユーザーをブロックしているか判定する
+     */
+    public function isBlocked($id)
+    {
+        foreach ($this->blockUsers() as $blockUser) {
+            if ($blockUser->id == $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * $idのユーザーをフォローする
      */
     public function follow($id)
@@ -80,6 +95,28 @@ class User extends Model
     {
         Follow::where('user', $this->id)
             ->where('follow_user', $id)
+            ->first()
+            ->delete();
+    }
+
+    /**
+     * $idのユーザーをブロックする
+     */
+    public function block($id)
+    {
+        $block = new block;
+        $block->user = $this->id;
+        $block->block_user = $id;
+        $block->save();
+    }
+
+    /**
+     * $idのユーザーをブロック解除する
+     */
+    public function unblock($id)
+    {
+        block::where('user', $this->id)
+            ->where('block_user', $id)
             ->first()
             ->delete();
     }
