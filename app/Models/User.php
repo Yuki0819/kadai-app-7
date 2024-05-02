@@ -50,6 +50,33 @@ class User extends Model
     }
 
     /**
+     * ユーザーがブロックしているユーザーのリストを取得する
+     */
+    public function blockUsers()
+    {
+        $blockUsers = Block::where('user', $this->id)->get();
+        $result = [];
+        foreach ($blockUsers as $blockUser) {
+            array_push($result, $blockUser->blockUser());
+        }
+        return $result;
+    }
+
+    /**
+     * ユーザーをブロックしているユーザーのリストを取得する
+     */
+    public function blockerUsers()
+    {
+        $blockerUsers = Block::where('block_user', $this->id)->get();
+        $result = [];
+        foreach ($blockerUsers as $blockUser) {
+            array_push($result, $blockUser->blockerUser());
+        }
+        return $result;
+    }
+    
+
+    /**
      * $idのユーザーがこのユーザーをフォローしているか判定する
      */
     public function isFollowed($id)
@@ -104,7 +131,7 @@ class User extends Model
      */
     public function block($id)
     {
-        $block = new block;
+        $block = new Block;
         $block->user = $this->id;
         $block->block_user = $id;
         $block->save();
@@ -115,7 +142,7 @@ class User extends Model
      */
     public function unblock($id)
     {
-        block::where('user', $this->id)
+        Block::where('user', $this->id)
             ->where('block_user', $id)
             ->first()
             ->delete();
