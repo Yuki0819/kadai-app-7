@@ -25,6 +25,8 @@ button {
     border-color: lightgray;
     border-style: solid;
     border-width: 2px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 .button-white:active {
@@ -35,6 +37,8 @@ button {
 .button-black {
     background-color: black;
     color: whitesmoke;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 .button-black:active {

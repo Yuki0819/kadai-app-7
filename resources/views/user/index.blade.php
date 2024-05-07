@@ -26,14 +26,12 @@
                         @else
                         <div class="block-info">
                             <form name="block" action="/block/{{ $user->id }}" method="post">
-                                @csrf @method('PUT') @if ($isblocked)
-                                <input type="hidden" name="isblock" value="0" />
-                                <button class="button-white" onClick="unblock()">
-                                        ブロック中
+                                @csrf @method('PUT') @if ($isBlocked)
+                                <input type="hidden" name="isBlock" value="0" />
+                                <input type="button" class="button-white" onClick="unblock()" value="ブロック中"/>
                                     </button> @else
-                                <input type="hidden" name="isblock" value="1" />
-                                <button class="button-black">
-                                        ブロック
+                                <input type="hidden" name="isBlock" value="1" />
+                                <input type="submit" class="button-black" value="ブロック"/>
                                     </button> @endif
                             </form>
                         </div>
@@ -41,13 +39,11 @@
                             <form name="follow" action="/follow/{{ $user->id }}" method="post">
                                 @csrf @method('PUT') @if ($isFollowed)
                                 <input type="hidden" name="isFollow" value="0" />
-                                <button class="button-white" onClick="unfollow()">
-                                        フォロー済み
-                                    </button> @else
+                                <input type="button" class="button-white" onClick="unfollow()" value="フォロー済み"/>    
+                                    @else
                                 <input type="hidden" name="isFollow" value="1" />
-                                <button class="button-black">
-                                        フォロー
-                                    </button> @endif
+                                <input type="submit" class="button-black" value="フォロー"/>
+                                    @endif
                             </form>
                         </div>
                         @endif
@@ -100,8 +96,7 @@
             document.follow.submit();
         }
     }
-</script>
-<script>
+
     function unblock() {
         if (confirm("ブロックを解除しますか?")) {
             document.block.submit();

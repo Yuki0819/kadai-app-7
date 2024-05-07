@@ -54,7 +54,7 @@ class BlockController extends Controller
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
 
-        if ($request->isblock) {
+        if ($request->isBlock) {
             // ブロック処理
             $loginUser->block($id);
         } else {
