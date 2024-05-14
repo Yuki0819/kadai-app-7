@@ -57,6 +57,10 @@ class BlockController extends Controller
         if ($request->isBlock) {
             // ブロック処理
             $loginUser->block($id);
+            $isFollowed = $loginUser->isFollowed($user->id);
+            
+            //if文を書く
+
         } else {
             // ブロック解除処理
             $loginUser->unblock($id);
