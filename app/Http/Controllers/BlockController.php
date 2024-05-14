@@ -35,7 +35,7 @@ class BlockController extends Controller
     }
 
     /**
-     * ブロック解除処理
+     * ブロック/ブロック解除処理
      */
     public function update(Request $request, $id)
     {

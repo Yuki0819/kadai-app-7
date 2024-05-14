@@ -32,3 +32,16 @@ if (logoutButton) {
 function isSp() {
     return window.screen.width <= SP_BREAKPOINT;
 }
+
+function unfollow() {
+    if (confirm("フォローを解除しますか?")) {
+        document.follow.submit();
+    }
+}
+
+function unblock() {
+    if (confirm("ブロックを解除しますか?")) {
+        document.block.submit();
+    }
+}
+

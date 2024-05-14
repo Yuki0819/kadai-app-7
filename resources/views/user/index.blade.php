@@ -31,7 +31,7 @@
                                 <input type="button" class="button-white" onClick="unblock()" value="ブロック中"/>
                                     </button> @else
                                 <input type="hidden" name="isBlock" value="1" />
-                                <input type="submit" class="button-black" value="ブロック"/>
+                                <input type="submit" class="button-black" onClick="onblock()" value="ブロック"/>
                                     </button> @endif
                             </form>
                         </div>
@@ -92,16 +92,23 @@
 <script src="{{ asset('/js/app.js') }}"></script>
 <script>
     function unfollow() {
-        if (confirm("フォローを解除しますか?")) {
-            document.follow.submit();
-        }
+    if (confirm("フォローを解除しますか?")) {
+        document.follow.submit();
     }
+}
 
     function unblock() {
         if (confirm("ブロックを解除しますか?")) {
             document.block.submit();
         }
     }
+    
+    function onblock() {
+        if (confirm("ブロックしますか?")) {
+            document.block.submit();
+        }
+    }
+
 </script>
 <style scoped>
     .user-page .page-container {
