@@ -66,7 +66,7 @@
                     </a>
                 </div>
             </div>
-            <div class="post-list">
+            <div id="postlist" class="post-list">
                 <div class="title">投稿一覧</div>
                 @foreach ($posts as $post)
                 <a href="/post/detail/{{ $post->id }}">
@@ -85,6 +85,7 @@
                 </a>
                 @endforeach
             </div>
+            <input id="displaybtn" type="button" value="表示する" onclick="clickBtn()">
         </div>
     </div>
     <x-footer></x-footer>
@@ -108,6 +109,23 @@
             document.block.submit();
         }
     }
+    
+    document.getElementById("postlist").style.display ="none";
+
+function clickBtn(){
+	const postlist = document.getElementById("postlist");
+    const displayBtn = document.getElementById("displaybtn");
+
+	if(postlist.style.display=="block"){
+		// noneで非表示
+		postlist.style.display ="none";
+        displayBtn.value = "表示する";
+	}else{
+		// blockで表示
+		postlist.style.display ="block";
+        displayBtn.value = "非表示にする";
+	}
+}
 
 </script>
 <style scoped>

@@ -58,8 +58,10 @@ class BlockController extends Controller
             // ブロック処理
             $loginUser->block($id);
             $isFollowed = $loginUser->isFollowed($user->id);
-            
             //if文を書く
+        if ($isFollowed) {
+            $loginUser->unfollow($id);
+        }
 
         } else {
             // ブロック解除処理
