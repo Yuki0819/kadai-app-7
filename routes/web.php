@@ -92,3 +92,11 @@ Route::get('/signup', [UserController::class, 'create']);
 
 /** 新規登録処理 */
 Route::post('/signup', [UserController::class, 'store']);
+
+
+
+
+/** 返信画面遷移 */
+Route::get('/reply', [ReplyController::class, 'create']);
+/** 返信処理 */
+Route::post('/reply', [ReplyController::class, 'store']);
