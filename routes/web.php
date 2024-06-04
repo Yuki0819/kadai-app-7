@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\ReplyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

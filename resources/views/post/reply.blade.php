@@ -13,36 +13,37 @@
 
 <body class="">
     <x-header></x-header>
-    <div class="page post-page">
+    <div class="page reply-page">
         <form class="form" action="/reply" method="post">
             @csrf
-            <textarea name="postContent" id="" cols="30" rows="5" placeholder="いまどうしてる?"></textarea>
-            <div class="post-button">
-            @error('postContent')
+            <textarea name="replyContent" id="" cols="30" rows="5" placeholder="いまどうしてる?"></textarea>
+            <div class="reply-button">
+            @error('replyContent')
   <div class="mt-3">
       <p class="text-red-500">
           {{ $message }}
       </p>
   </div>
 @enderror
-                <button class="button-white" type="submit">返信する</button>
+            <button class="button-reply" type="submit">返信する</button>
+        </form>
             </div>
         </form>
     </div>
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
 <style scoped>
-    .post-page .form {
+    .reply-page .form {
         display: flex;
         flex-direction: column;
     }
     
-    .post-page .post-button {
+    .reply-page .reply-button {
         text-align: end;
         margin: 20px 20px 0 0;
     }
     
-    .post-page button {
+    .reply-page button {
         height: 35px;
         width: 90px;
     }

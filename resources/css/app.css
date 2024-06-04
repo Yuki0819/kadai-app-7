@@ -29,6 +29,17 @@ button {
     font-weight: bold;
 }
 
+
+.button-reply {
+    background-color: white;
+    color: rgb(35, 35, 35);
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
 .button-white:active {
     background-color: lightgray;
     ;

@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller,
 class ReplyController extends Controller
 {
     /**
-     * 投稿画面遷移
+     * 返信画面遷移
      */
     function create()
     {
@@ -28,7 +28,7 @@ class ReplyController extends Controller
     }
 
     /**
-     * 投稿処理
+     * 返信処理
      */
     function store(Request $request)
     {
@@ -42,7 +42,7 @@ class ReplyController extends Controller
         $loginUser = Session::get('user');
 
 $rules = [
-    'postContent' => 'min:1|max:140',
+    'replyContent' => 'min:1|max:140',
 ];
 
 $messages = ['min' => '入力してください。', 'max' => '140文字以下にしてください。'];
@@ -52,9 +52,9 @@ Validator::make($request->all(), $rules, $messages)->validate();
 
         
         // データ登録
-        $post = new Post;
+        $post = new Reply;
         $post->user = $loginUser->id;
-        $post->content = $request->postContent;
+        $post->content = $request->replyContent;
         $post->save();
 
         return redirect('/');

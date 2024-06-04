@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Follow;
 use App\Models\Post;
 use App\Models\Block;
+use App\Models\Reply;
 
 class User extends Model
 {
