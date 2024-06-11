@@ -75,7 +75,7 @@ Validator::make($request->all(), $rules, $messages)->validate();
 
         // 投稿者を取得
         $user = $post->user();
-
+        
         $isOwnPost = false;
 
         // セッションにログイン情報があるか確認

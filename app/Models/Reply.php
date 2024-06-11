@@ -9,5 +9,6 @@ use App\Models\User;
 class Reply extends Model
 {
     use HasFactory;
-    
+
+
 }

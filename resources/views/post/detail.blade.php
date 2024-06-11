@@ -22,10 +22,6 @@
                 </div>
                 <div class="content">{{ $post->content }}</div>
                 <div class="time-stamp">{{ $post->created_at }}</div>
-            </a>
-            <form action="/reply" methot="get">
-            <button class="button-white" type="submit">返信する</button>
-        </form>
             @if ($isOwnPost = $loginUser->id == $user->id)  
             <div class="menu">
                 <div class="menu-item font-blue">
