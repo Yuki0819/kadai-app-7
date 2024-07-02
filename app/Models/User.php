@@ -19,10 +19,22 @@ class User extends Model
     public function posts()
     {
         return Post::where('user', $this->id)
-        ->where('is_deleted',false)
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->where('is_deleted', false)
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
+
+    /**
+     * ユーザーのリプライ取得する
+     */
+    public function replies()
+    {
+        return Reply::where('user', $this->id)
+            ->where('is_deleted', false)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
 
     /**
      * ユーザーがフォローしているユーザーのリストを取得する
@@ -75,7 +87,7 @@ class User extends Model
         }
         return $result;
     }
-    
+
 
     /**
      * $idのユーザーがこのユーザーをフォローしているか判定する

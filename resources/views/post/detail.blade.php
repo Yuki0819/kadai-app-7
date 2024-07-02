@@ -22,19 +22,19 @@
                 </div>
                 <div class="content">{{ $post->content }}</div>
                 <div class="time-stamp">{{ $post->created_at }}</div>
-            @if ($isOwnPost = $loginUser->id == $user->id)  
-            <div class="menu">
-                <div class="menu-item font-blue">
-                    <a href="/post/edit/{{ $post->id }}">編集</a>
-                </div>
-                <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
-                    @csrf
-                    <div class="menu-item font-red" onclick="deletePost()">
-                        削除
+                @if ($isOwnPost = $loginUser->id == $user->id)
+                <div class="menu">
+                    <div class="menu-item font-blue">
+                        <a href="/post/edit/{{ $post->id }}">編集</a>
                     </div>
-                </form>
-            </div>
-            @endif
+                    <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
+                        @csrf
+                        <div class="menu-item font-red" onclick="deletePost()">
+                            削除
+                        </div>
+                    </form>
+                </div>
+                @endif
         </div>
     </div>
 </body>
@@ -45,7 +45,7 @@
     function deletePost() {
         if (confirm("削除しますか?")) {
             document.delete.submit();
-            
+
         }
     }
 </script>
@@ -54,45 +54,45 @@
         width: 50px;
         height: 50px;
     }
-    
+
     .post-detail-page .user-info {
         display: flex;
     }
-    
+
     .post-detail-page .user-name {
         line-height: 50px;
         font-size: 18px;
     }
-    
+
     .post-detail-page .time-stamp {
         text-align: end;
         font-size: 14px;
     }
-    
+
     .post-detail-page .post {
         padding: 0 10px;
     }
-    
+
     .post-detail-page .menu {
         display: flex;
         justify-content: end;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
-    
+
     .post-detail-page .content {
         word-wrap: break-word;
     }
