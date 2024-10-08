@@ -74,7 +74,7 @@
 </body>
 <script src="{{ asset('/js/app.js') }}"></script>
 <style scoped>
-    <style scoped>
+   
     .signup-page {
         display: flex;
         justify-content: center;

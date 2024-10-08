@@ -21,6 +21,7 @@
                     <img class="user-icon" src="{{ asset('/img/user_icon.png') }}" alt="" />
                     <div class="user-name">{{ $user->name }}</div>
                 </div>
+            </a>
                 <div class="content">{{ $post->content }}</div>
                 <div class="time-stamp">{{ $post->created_at }}</div>
                 @if ($isOwnPost = $loginUser->id == $user->id)
@@ -37,14 +38,7 @@
                 </div>
                 @endif
         </div>
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        返信する
-                    </button>
-                </h2>
+        
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <textarea class="form-control" aria-label="With textarea"></textarea>

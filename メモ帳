@@ -64,3 +64,14 @@ Replyseederに書いたものを表示するために、PostModelにリプライ
 
 第一目標
 投稿に対するリプライを取得して表示する
+model→controller
+
+detal.blade.phpに入っていたやつ送信するの上
+<div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        返信する
+                    </button>
+                </h2>
