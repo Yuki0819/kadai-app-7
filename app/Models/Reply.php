@@ -13,9 +13,7 @@ class Reply extends Model
     /**
      * この投稿にリプライしたユーザーを取得する
      */
-    public function reply()
-    {
-    }
+    public function reply() {}
 
     /**
      * この投稿を投稿したユーザーを取得する

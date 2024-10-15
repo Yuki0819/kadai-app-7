@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Http\Controllers\Controller,
     Session;
-    use Illuminate\Support\Facades\Validator;
-    
-    
+use Illuminate\Support\Facades\Validator;
+
+
 
 class PostController extends Controller
 {
@@ -41,16 +42,16 @@ class PostController extends Controller
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
 
-$rules = [
-    'postContent' => 'min:1|max:140',
-];
+        $rules = [
+            'postContent' => 'min:1|max:140',
+        ];
 
-$messages = ['min' => '入力してください。', 'max' => '140文字以下にしてください。'];
+        $messages = ['min' => '入力してください。', 'max' => '140文字以下にしてください。'];
 
-Validator::make($request->all(), $rules, $messages)->validate();
+        Validator::make($request->all(), $rules, $messages)->validate();
 
 
-        
+
         // データ登録
         $post = new Post;
         $post->user = $loginUser->id;
@@ -68,14 +69,23 @@ Validator::make($request->all(), $rules, $messages)->validate();
         // 指定したIDの投稿情報を取得する
         $post = Post::find($id);
 
+        // 指定したIDのリプライ情報を取得する
+        $reply = Reply::find($id);
+
         // 投稿が存在するか判定
         if ($post == null) {
             return dd('存在しない投稿です');
         }
 
+        // リプライが存在するか判定
+        if ($reply == null) {
+            return dd('存在しないリプライです');
+        }
+
         // 投稿者を取得
         $user = $post->user();
-        
+
+
         $isOwnPost = false;
 
         // セッションにログイン情報があるか確認
@@ -87,7 +97,7 @@ Validator::make($request->all(), $rules, $messages)->validate();
         }
 
         // 画面表示
-        return view('post.detail', compact('post', 'user', 'isOwnPost','loginUser'));
+        return view('post.detail', compact('post', 'user', 'isOwnPost', 'loginUser', 'reply'));
     }
 
     /**
@@ -123,7 +133,7 @@ Validator::make($request->all(), $rules, $messages)->validate();
      */
     public function update(Request $request, $id)
     {
-        
+
         // idから投稿を取得
         $post = Post::find($id);
 
@@ -140,7 +150,7 @@ Validator::make($request->all(), $rules, $messages)->validate();
         $post->content = $request->postContent;
         $post->save();
 
-        
+
 
         // 画面表示
         return redirect('/post/detail/' . $post->id);

@@ -22,31 +22,33 @@
                     <div class="user-name">{{ $user->name }}</div>
                 </div>
             </a>
-                <div class="content">{{ $post->content }}</div>
-                <div class="time-stamp">{{ $post->created_at }}</div>
-                @if ($isOwnPost = $loginUser->id == $user->id)
-                <div class="menu">
-                    <div class="menu-item font-blue">
-                        <a href="/post/edit/{{ $post->id }}">編集</a>
-                    </div>
-                    <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
-                        @csrf
-                        <div class="menu-item font-red" onclick="deletePost()">
-                            削除
-                        </div>
-                    </form>
+            <div class="content">{{ $post->content }}</div>
+            <div class="time-stamp">{{ $post->created_at }}</div>
+            @if ($isOwnPost = $loginUser->id == $user->id)
+            <div class="menu">
+                <div class="menu-item font-blue">
+                    <a href="/post/edit/{{ $post->id }}">編集</a>
                 </div>
-                @endif
+                <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
+                    @csrf
+                    <div class="menu-item font-red" onclick="deletePost()">
+                        削除
+                    </div>
+                </form>
+            </div>
+            @endif
         </div>
-        
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                        <button type="button" class="btn btn-primary">送信する</button>
-                    </div>
-                </div>
+        <div class="user">{{ $reply->user()->name }}</div>
+        <div class="content">{{ $reply->content }}</div>
+        <div class="time-stamp">{{ $reply->created_at }}</div>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <button type="button" class="btn btn-primary">送信する</button>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </body>
 
