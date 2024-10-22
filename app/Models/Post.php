@@ -17,4 +17,14 @@ class Post extends Model
     {
         return User::find($this->user);
     }
+
+    /**
+     * ユーザーのリプライ取得する
+     */
+    public function replies()
+    {
+        return Reply::where('postid', $this->id)
+            ->where('is_deleted', false)
+            ->get();
+    }
 }

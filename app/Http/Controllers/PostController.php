@@ -70,21 +70,16 @@ class PostController extends Controller
         $post = Post::find($id);
 
         // 指定したIDのリプライ情報を取得する
-        $reply = Reply::find($id);
+        // $reply = Reply::find($id);
+        $replys = $post->replies();
 
         // 投稿が存在するか判定
         if ($post == null) {
             return dd('存在しない投稿です');
         }
 
-        // リプライが存在するか判定
-        if ($reply == null) {
-            return dd('存在しないリプライです');
-        }
-
         // 投稿者を取得
         $user = $post->user();
-
 
         $isOwnPost = false;
 
@@ -97,7 +92,7 @@ class PostController extends Controller
         }
 
         // 画面表示
-        return view('post.detail', compact('post', 'user', 'isOwnPost', 'loginUser', 'reply'));
+        return view('post.detail', compact('post', 'user', 'isOwnPost', 'loginUser', 'replys'));
     }
 
     /**

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user');
             $table->unsignedBigInteger('postid');
             $table->string('content');
+            $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
     }

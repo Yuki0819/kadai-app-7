@@ -24,16 +24,6 @@ class User extends Model
             ->get();
     }
 
-    /**
-     * ユーザーのリプライ取得する
-     */
-    public function replies()
-    {
-        return Reply::where('user', 'postid', $this->id)
-            ->where('is_deleted', false)
-            ->orderBy('created_at', 'desc')
-            ->get();
-    }
 
 
     /**
