@@ -45,18 +45,19 @@
             </div>
             @foreach ($replys as $reply)
             <div class="user-info">
-                <a href="/user/{{ $user->id }}">
+                <a href="/user/{{ $reply->user()->id }}">
                     <img class="reply-icon" src="{{ asset('/img/user_icon.png') }}" alt="" />
                     <div class="user">{{ $reply->user()->name }}
                 </a>
             </div>
         </div>
-        <div class="reply-content">{{ $reply->content }}</div>
-        <div class="reply-time-stamp">{{ $reply->created_at }}</div>
+        <div class="content">
+            <a href="/post/reply/{{ $reply->user()->id }}">
+                <div class="reply-content">{{ $reply->content }}</div>
+                <div class="reply-time-stamp">{{ $reply->created_at }}</div>
+            </a>
+        </div>
         @endforeach
-    </div>
-    </div>
-    </div>
     </div>
 </body>
 
