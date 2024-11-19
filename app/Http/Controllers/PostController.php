@@ -184,3 +184,36 @@ class PostController extends Controller
         return redirect('/');
     }
 }
+
+/**
+ * リプライ処理
+ */
+function store(Request $request)
+{
+    // セッションにログイン情報があるか確認
+    if (!Session::exists('user')) {
+        // ログインしていなければログインページへ
+        return redirect('/login');
+    }
+
+    // ログイン中のユーザーの情報を取得する
+    $loginUser = Session::get('user');
+
+    $rules = [
+        'replyContent' => 'min:1|max:140',
+    ];
+
+    $messages = ['min' => '入力してください。', 'max' => '140文字以下にしてください。'];
+
+    Validator::make($request->all(), $rules, $messages)->validate();
+
+
+
+    // データ登録
+    $reply = new Reply;
+    $reply->user = $loginUser->id;
+    $reply->content = $request->replyContent;
+    $reply->save();
+
+    return redirect('/');
+}
