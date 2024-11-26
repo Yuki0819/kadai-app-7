@@ -11,38 +11,10 @@
     <title>kadai-app | リプライ詳細</title>
 </head>
 <!-- リプライ詳細画面 -->
-body class="">
-<x-header></x-header>
-<div class="page post-detail-page">
-    <div class="post">
-        <a href="/user/{{ $user->id }}">
-            <div class="user-info">
-                <img class="user-icon" src="{{ asset('/img/user_icon.png') }}" alt="" />
-                <div class="user-name">{{ $user->name }}</div>
-            </div>
-        </a>
-        <div class="content">{{ $post->content }}</div>
-        <div class="time-stamp">{{ $post->created_at }}</div>
-        @if ($isOwnPost = $loginUser->id == $user->id)
-        <div class="menu">
-            <div class="menu-item font-blue">
-                <a href="/post/edit/{{ $post->id }}">編集</a>
-            </div>
-            <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
-                @csrf
-                <div class="menu-item font-red" onclick="deletePost()">
-                    削除
-                </div>
-            </form>
-        </div>
-        @endif
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-                <button type="button" class="btn btn-primary">送信する</button>
-            </div>
-        </div>
-        @foreach ($replys as $reply)
+
+<body class="">
+    <x-header></x-header>
+    <div class="page reply-detail-page">
         <div class="user-info">
             <a href="/user/{{ $reply->user()->id }}">
                 <img class="reply-icon" src="{{ asset('/img/user_icon.png') }}" alt="" />
@@ -56,8 +28,25 @@ body class="">
             <div class="reply-time-stamp">{{ $reply->created_at }}</div>
         </a>
     </div>
-    @endforeach
-</div>
+    @if ($isOwnReply = $loginUser->id == $user->id)
+    <div class="menu">
+        <div class="menu-item font-blue">
+            <a href="/post/edit/{{ $post->id }}">編集</a>
+        </div>
+        <form name="delete" action="/post/delete/{{ $post->id }}" method="post">
+            @csrf
+            <div class="menu-item font-red" onclick="deletePost()">
+                削除
+            </div>
+        </form>
+    </div>
+    @endif
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <button type="button" class="btn btn-primary">送信する</button>
+        </div>
+    </div>
 </body>
 
 <x-footer></x-footer>

@@ -70,7 +70,6 @@ class PostController extends Controller
         $post = Post::find($id);
 
         // 指定したIDのリプライ情報を取得する
-        // $reply = Reply::find($id);
         $replys = $post->replies();
 
         // 投稿が存在するか判定

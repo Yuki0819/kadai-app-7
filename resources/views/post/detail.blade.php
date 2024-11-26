@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="content">
-            <a href="/post/reply/">
+            <a href="/post/reply/{{ $reply->id }}">
                 <div class="reply-content">{{ $reply->content }}</div>
                 <div class="reply-time-stamp">{{ $reply->created_at }}</div>
             </a>
