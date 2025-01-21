@@ -60,71 +60,71 @@
     }
 </script>
 <style scoped>
-    .post-detail-page .user-icon {
+    .reply-detail-page .user-icon {
         width: 75px;
         height: 75px;
     }
 
-    .post-detail-page .reply-icon {
+    .reply-detail-page .reply-icon {
         width: 50px;
         height: 50px;
     }
 
-    .post-detail-page .user-info {
+    .reply-detail-page .user-info {
         display: flex;
     }
 
-    .post-detail-page .user-name {
+    .reply-detail-page .user-name {
         line-height: 75px;
         font-size: 20px;
     }
 
-    .post-detail-page .user {
+    .reply-detail-page .user {
         line-height: 50px;
         font-size: 18px;
     }
 
-    .post-detail-page .time-stamp {
+    .reply-detail-page .time-stamp {
         text-align: end;
         font-size: 14px;
     }
 
-    .post-detail-page .reply-time-stamp {
+    .reply-detail-page .reply-time-stamp {
         text-align: end;
         padding: 0 10px;
         font-size: 14px;
     }
 
-    .post-detail-page .post {
+    .reply-detail-page .post {
         padding: 0 10px;
         font-size: 18px;
     }
 
-    .post-detail-page .reply-content {
+    .reply-detail-page .reply-content {
         padding: 0 10px;
     }
 
-    .post-detail-page .menu {
+    .reply-detail-page .menu {
         display: flex;
         justify-content: end;
     }
 
-    .post-detail-page .menu-item {
+    .reply-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
 
-    .post-detail-page .menu-item {
+    .reply-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
 
-    .post-detail-page .menu-item {
+    .reply-detail-page .menu-item {
         font-size: 16px;
         margin: 0 2px;
     }
 
-    .post-detail-page .content {
+    .reply-detail-page .content {
         word-wrap: break-word;
     }
 </style>
